@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "full_name": "Zane Mingee",
   "email": "zmingee@outlook.com",
   "github_username": "zmingee",
@@ -6,4 +7,7 @@
   "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
   "project_url": "https://myapp.com",
   "project_short_description": "Example application using MSTV architecture"
+=======
+  "repo_name": ""
+>>>>>>> 8703ec748f46cd5b29b557d6de1bdf035a420952
 }
