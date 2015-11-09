@@ -60,6 +60,22 @@ def run_debug():
     app = create_app()
     app.run(host='0.0.0.0')
 
+@task
+def build_rpm():
+    """
+    Build RPM
+    MUST BE RAN ON CENTOS/RHEL
+
+    :return:
+    """
+
+    print("Building RPM...")
+    run("/bin/yum install -y rpm-build rpm-devel ruby ruby-devel")
+    run("/usr/bin/gem install fpm")
+    run("mkdir /usr/local/bin/instance_api")
+    run("/usr/local/bin/virtualenv -p /usr/local/bin/python3 /usr/local/bin/instance_api/env")
+    run("/usr/local/bin/instance_api/env/bin/python3 setup.py install")
+    run("/usr/local/bin/fpm -s dir -t rpm -n instance_api -v 0.5.0 -p instance_api_VERSION_ARCH.rpm /usr/local/bin/instance_api/=/usr/local/bin/instance_api")
 
 if __name__ == "__main__":
     print("tasks.py is being run directly")

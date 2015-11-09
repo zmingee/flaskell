@@ -53,3 +53,33 @@ def configure_blueprints(app, blueprints):
 
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
+
+
+
+def configure_logging(app):
+    """Configure file logging."""
+
+    # if app.debug or app.testing:
+    #     # Skip debug and test mode. Just check standard output.
+    #     return
+
+    import logging
+
+    app.logger.setLevel("INFO")
+
+    info_log = os.path.join(app.config['LOG_FOLDER'], 'info.log')
+
+    info_file_handler = logging.handlers.RotatingFileHandler(info_log, maxBytes=100000, backupCount=10)
+    info_file_handler.setLevel("INFO")
+    info_file_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s '
+        '[in %(pathname)s:%(lineno)d]')
+    )
+
+
+
+    app.logger.addHandler(info_file_handler)
+    # Testing
+    #app.logger.info("testing info.")
+    #app.logger.warn("testing warn.")
+    #app.logger.error("testing error.")
