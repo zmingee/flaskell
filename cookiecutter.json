@@ -1,0 +1,10 @@
+{
+  "full_name": "Zane Mingee",
+  "email": "zmingee@outlook.com",
+  "github_username": "zmingee",
+  "project_name": "My Flask MSTV App",
+  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "project_url": "https://myapp.com",
+  "project_short_description": "Example application using MSTV architecture",
+  "license": "MIT"
+}

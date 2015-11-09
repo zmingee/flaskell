@@ -1,0 +1,70 @@
+---
+- vmName           : nginx01
+  cores            : 2
+  memory_mb        : 1024
+  hostname         : nginx02
+  role             : proxy
+  osFam            : nix
+  ip1              : 192.168.0.2
+  syncVagrant      : !!bool true
+  syncFolder       : !!bool false
+  syncFolderSrc    : !!bool false
+  syncFolderDst    : !!bool false
+  syncFolderType   : !!bool false
+  shellScript      : !!bool false
+
+- vmName           : nginx02
+  cores            : 2
+  memory_mb        : 1024
+  hostname         : nginx02
+  role             : proxy
+  osFam            : nix
+  ip1              : 192.168.0.3
+  syncVagrant      : !!bool true
+  syncFolder       : !!bool false
+  syncFolderSrc    : !!bool false
+  syncFolderDst    : !!bool false
+  syncFolderType   : !!bool false
+  shellScript      : !!bool false
+
+- vmName           : app01
+  cores            : 2
+  memory_mb        : 1024
+  hostname         : app01
+  role             : app
+  osFam            : nix
+  ip1              : 192.168.0.4
+  syncVagrant      : !!bool true
+  syncFolder       : !!bool false
+  syncFolderSrc    : !!bool false
+  syncFolderDst    : !!bool false
+  syncFolderType   : !!bool false
+  shellScript      : !!bool false
+
+- vmName           : app02
+  cores            : 2
+  memory_mb        : 1024
+  hostname         : app02
+  role             : app
+  osFam            : nix
+  ip1              : 192.168.0.5
+  syncVagrant      : !!bool true
+  syncFolder       : !!bool false
+  syncFolderSrc    : !!bool false
+  syncFolderDst    : !!bool false
+  syncFolderType   : !!bool false
+  shellScript      : !!bool false
+
+#- vmName           :
+#  cores            :
+#  memory_mb        :
+#  hostname         :
+#  role             :
+#  osFam            :
+#  ip1              :
+#  syncVagrant      :
+#  syncFolder       :
+#  syncFolderSrc    :
+#  syncFolderDst    :
+#  syncFolderType   :
+#  shellScript      :

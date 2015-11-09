@@ -1,0 +1,8 @@
+include LICENSE
+
+recursive-include {{cookiecutter.repo_name}} *.py
+#recursive-include {{cookiecutter.repo_name}}/templates *
+#recursive-include {{cookiecutter.repo_name}}/static *
+
+recursive-exclude {{cookiecutter.repo_name}} *.pyc
+recursive-exclude tests *.pyc
