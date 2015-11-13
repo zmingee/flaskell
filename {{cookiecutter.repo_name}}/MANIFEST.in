@@ -1,4 +1,6 @@
 include LICENSE
+include requirements.txt
+include devel-requirements.txt
 
 recursive-include {{cookiecutter.repo_name}} *.py
 #recursive-include {{cookiecutter.repo_name}}/templates *

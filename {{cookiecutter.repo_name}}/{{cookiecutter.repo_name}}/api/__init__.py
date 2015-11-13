@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    {{cookiecutter.repo_name}}.api
+    {{ cookiecutter.repo_name }}.api
     ################
 
     API sub-app package implemented via JSON-RPC
@@ -8,11 +8,9 @@
 
 from functools import wraps
 
-from flask import jsonify
+from flask_jsonrpc.exceptions import Error
 
 from .. import factory
-from ..core import ComputeError, ComputeFormError
-from ..utils import JSONEncoder
 from ..extensions import JSONRPC
 
 
@@ -27,20 +25,6 @@ def create_app(settings_override=None):
 
     app = factory.create_app(__name__, __path__, settings_override)
 
-
-    # TODO: Investigate json_encoder change, verify it's needed, and document
-
-    # Set the default JSON encoder
-    app.json_encoder = JSONEncoder
-
-    # TODO: Investigate custom error handlers, verify it's needed, and document
-
-    # Register custom error handlers
-    app.logger.debug('Registering error handlers for %s' % app.name)
-    app.errorhandler(ComputeError)(on_api_error)
-    app.errorhandler(ComputeFormError)(on_api_form_error)
-    app.errorhandler(404)(on_404)
-
     return app
 
 
@@ -54,58 +38,34 @@ def route(*args, **kwargs):
     :return: Wrapper decorator
     """
 
-    # TODO: Add some deeper documentation for this process
-    # TODO: Cleanup all commented-out sections
     # TODO: Add decorator for authentication management
-    # TODO: Verify this is best practice for wrapping decorators
     def decorator(f):
         """Wrapper decorator to save on useless verbosity"""
         # pylint: disable=unused-variable
         @JSONRPC.method(*args, **kwargs)
         @wraps(f)
         def wrapper(*args, **kwargs):
-            """Wrapper decorator to save on useless verbosity"""
+            """Run wrapped function"""
             rv = f(*args, **kwargs)
-            if isinstance(rv, tuple):
-                rv = rv[0]
             return rv
         return f
 
     return decorator
 
 
-def on_api_error(e):
-    """ Custom error handler for general 400 errors.
+# TODO: Determine best way to share errors and handlers between types of apps (frontend, REST, etc)
 
-    :param e: General error
-    :type e: :class:`{{cookiecutter.repo_name}}.core.ComputeError`
-
-    :return: Error message, 400
-    :rtype: json, int
-    """
-    return jsonify(dict(error=e.msg)), 400
+# class ComputeError(Error):
+#     """Base application error class."""
+#     status = 500
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
 
 
-def on_api_form_error(e):
-    """ Custom error handler for 400 form errors.
+class {{ cookiecutter.repo_name|capitalize }}FormError(Error):
+    """Raise when an error processing a form occurs."""
+    status = 500
 
-    :param e: Form error
-    :type e: :class:`{{cookiecutter.repo_name}}.core.ComputeFormError`
-
-    :return: Error message, 400
-    :rtype: json, int
-    """
-    return jsonify(dict(errors=e.errors)), 400
-
-
-def on_404(e):
-    """ Custom error handler for 404 errors.
-
-    :param e: Error
-    :type e: :class:`Exception`
-
-    :return: Error message, 404
-    :rtype: json, int
-    """
-    # pylint: disable=unused-argument
-    return jsonify(dict(error='Not found')), 404
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

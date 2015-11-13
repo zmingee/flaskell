@@ -1,9 +1,8 @@
+# -*- coding: utf-8 -*-
 """
     {{cookiecutter.repo_name}} default and base Flask configurations
 """
 
-
-# -*- coding: utf-8 -*-
 # pylint: disable=too-few-public-methods
 
 import os
@@ -31,10 +30,6 @@ class BaseConfig(object):
     LOG_FOLDER = os.path.join(INSTANCE_FOLDER_PATH, 'logs')
     make_dir(LOG_FOLDER)
 
-    MAX_CONTENT_LENGTH = 16 * 1024 * 1024
-    UPLOAD_FOLDER = os.path.join(INSTANCE_FOLDER_PATH, 'uploads')
-    make_dir(UPLOAD_FOLDER)
-
 
 class DefaultConfig(BaseConfig):
     """
@@ -44,17 +39,6 @@ class DefaultConfig(BaseConfig):
     """
 
     DEBUG = False
-
-    # Flask-Sqlalchemy
-    #SQLALCHEMY_ECHO = True
-    # SQLITE for prototyping.
-    #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + INSTANCE_FOLDER_PATH + '/db.sqlite'
-    # MYSQL for production.
-    #SQLALCHEMY_DATABASE_URI = 'mysql://username:password@server/db?charset=utf8'
-
-    # Flask-cache: http://pythonhosted.org/Flask-Cache/
-    CACHE_TYPE = 'simple'
-    CACHE_DEFAULT_TIMEOUT = 60
 
 
 class TestConfig(BaseConfig):
@@ -66,6 +50,3 @@ class TestConfig(BaseConfig):
 
     TESTING = True
     WTF_CSRF_ENABLED = False
-
-    SQLALCHEMY_ECHO = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'

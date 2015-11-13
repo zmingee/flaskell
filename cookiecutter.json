@@ -4,6 +4,7 @@
   "github_username": "zmingee",
   "project_name": "My Flask MSTV App",
   "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "service_name_1": "users",
   "project_url": "https://myapp.com",
   "project_short_description": "Example application using MSTV architecture",
   "license": "MIT"
