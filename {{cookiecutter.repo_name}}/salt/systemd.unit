@@ -1,0 +1,17 @@
+[Unit]
+Description={{ cookiecutter.repo_name }} Microservice API
+Wants=network.target
+After=network.target
+
+[Service]
+PIDFile=/srv/{{ cookiecutter.repo_name }}/gunicorn.pid
+User=root
+Group=root
+WorkingDirectory=/srv/{{ cookiecutter.repo_name }}
+ExecStart=/bin/bash -c "source venv/bin/activate; gunicorn -c /srv/{{ cookiecutter.repo_name }}/gunicorn_conf.py {{ cookiecutter.repo_name }}.wsgi:APPLICATION"
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
