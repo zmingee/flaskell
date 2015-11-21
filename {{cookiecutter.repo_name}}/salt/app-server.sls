@@ -31,7 +31,7 @@ gcc:
     - mode: 644
     - source: salt://{{ cookiecutter.repo_name }}-ms/gunicorn_conf.py
 
-/srv/{{ cookiecutter.repo_name }}/venv/bin/pip install {{ cookiecutter.repo_name }}=={{ pillar['version'] }}:
+/srv/{{ cookiecutter.repo_name }}/venv/bin/pip install {{ cookiecutter.repo_name }}==:
   cmd.run: []
 
 /etc/systemd/system/{{ cookiecutter.repo_name }}.service:
