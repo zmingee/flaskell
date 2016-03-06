@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-    tests.utils
-    ###########
+tests.utils
+###########
 
-    test utilities
+test utilities
 """
 
 import base64

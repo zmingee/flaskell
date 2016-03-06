@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
 """
-    tests.settings
-    ##############
+tests.settings
+##############
 
-    tests settings module
+tests settings module
 """
 
-# TODO: Change this module into a more :module:`{{cookiecutter.repo_name}}.config` like approach
 
 DEBUG = False
 TESTING = True

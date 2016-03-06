@@ -1,8 +1,8 @@
 """
-    tests.api
-    #########
+tests.api
+#########
 
-    api tests package
+api tests package
 """
 
 from {{cookiecutter.repo_name}}.api import create_app

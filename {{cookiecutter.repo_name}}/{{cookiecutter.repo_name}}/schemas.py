@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
 """
-    {{cookiecutter.repo_name}}.schemas
-
-    Cerberus-based schemas for data validation
+Cerberus-based schemas for data validation
 """

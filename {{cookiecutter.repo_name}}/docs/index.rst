@@ -1,7 +1,7 @@
-Compute Documentation
+{{cookiecutter.repo_name|capitalize}} Documentation
 ==========================
 
-This site documents {{cookiecutter.repo_name}}'s conceptual, API, and user documentation
+----
 
 Getting Started
 ---------------
@@ -11,17 +11,25 @@ Core concepts and calls explanations
 .. toctree::
     :maxdepth: 2
 
-    getting_started
+    changelog
 
 Concepts
 --------
 
-TO BE WRITTEN
+.. toctree::
+    :maxdepth: 2
+    :glob:
+
+    concepts/*
 
 User Guide
 ----------
 
-TO BE WRITTEN
+.. toctree::
+    :maxdepth: 2
+    :glob:
+
+    guide/*
 
 API Reference
 -------------
@@ -29,10 +37,13 @@ API Reference
 Auto-generated API documentation
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
 
-    api/*
+    {{cookiecutter.repo_name}}/api
+    {{cookiecutter.repo_name}}/api/*
+    {{cookiecutter.repo_name}}/services/*
+    {{cookiecutter.repo_name}}/*
 
 Indices and tables
 ==================
@@ -40,4 +51,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

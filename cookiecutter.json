@@ -2,7 +2,7 @@
   "full_name": "Zane Mingee",
   "email": "zmingee@outlook.com",
   "github_username": "zmingee",
-  "project_name": "My Flask MSTV App",
+  "project_name": "Test",
   "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
   "service_name_1": "users",
   "project_url": "https://myapp.com",

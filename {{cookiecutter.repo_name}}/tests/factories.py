@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    tests.factories
-    ###############
+tests.factories
+###############
 
-    Overholt test factories module
+{{cookiecutter.repo_name|capitalize}} test factories module
 """
 
 from datetime import datetime

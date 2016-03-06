@@ -1,9 +1,12 @@
 import os
 import sys
+import multiprocessing as mp
+import tempfile
 
 from invoke import task, run
 
 from setup import NAME, VERSION
+
 
 @task
 def setup_virtualenv():
@@ -20,6 +23,29 @@ def setup_virtualenv():
         hide=True)
 
 
+def clean_up(x):
+    return run('find . -name "{0}" | xargs rm -rf'.format(x))
+
+
+@task
+def clean():
+    print('Cleaning directories')
+    to_clean = (
+        '*.pyc',
+        '*.egg-info',
+        '.coverage',
+        '__pycache__',
+        '.tox',
+        'build',
+        'dist',
+    )
+
+    #results = list(map((lambda x: run('find . -name "{0}" | xargs rm -rf'.format(x))), to_clean))
+
+    pool = mp.Pool(processes=4)
+    results = [pool.apply(clean_up, args=(x,)) for x in to_clean]
+
+
 @task(pre=[setup_virtualenv])
 def run_debug():
     """
@@ -31,12 +57,12 @@ def run_debug():
 
     from werkzeug.serving import run_simple
 
-    from {{ cookiecutter.repo_name }} import wsgi
+    from {{cookiecutter.repo_name}} import wsgi
 
     run_simple('0.0.0.0', 5000, wsgi.APPLICATION, use_reloader=True, use_debugger=True)
 
 
-@task()
+@task
 def tox():
     """
     Run tox
@@ -45,14 +71,3 @@ def tox():
 
     print('Running tox')
     run('/usr/local/bin/tox --recreate')
-
-
-@task()
-def wheel():
-    """
-    Setup and upload wheel
-    :return:
-    """
-
-    print('Building and uploading wheel')
-    run('/usr/local/bin/python3 setup.py bdist_wheel upload -r local')

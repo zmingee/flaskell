@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-    wsgi
-    ####
-
 This module provides an entrypoint for WSGI servers, accessible by ``application``
 or by running this file as a script.
 
@@ -16,7 +13,7 @@ of this module.
 from werkzeug.serving import run_simple
 #from werkzeug.wsgi import DispatcherMiddleware
 
-from {{ cookiecutter.repo_name }} import api
+from {{cookiecutter.repo_name}} import api
 
 #application = DispatcherMiddleware(frontend.create_app(), {
 #    '/api': api.create_app()

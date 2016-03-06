@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
 """
-    {{cookiecutter.repo_name}} core module containing things like application-wide
-    errors
+{{cookiecutter.repo_name|capitalize}} core module containing things like application-wide
+errors
 """

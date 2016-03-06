@@ -1,17 +1,14 @@
-# -*- coding: utf-8 -*-
 """
-    tests
-    #####
+tests
+#####
 
-    tests package
+tests package
 """
 
 from unittest import TestCase
 
 from .utils import FlaskTestCaseMixin
 
-# TODO: Add tests for service layer with a unit test approach
-# TODO: Document approach for testing
 
 class {{cookiecutter.repo_name|capitalize}}TestCase(TestCase):
     pass
